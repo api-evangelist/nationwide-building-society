@@ -1,0 +1,39 @@
+# Nationwide Building Society — Open Banking APIs
+
+> Nationwide Building Society is the world's largest building society and one of the UK's biggest retail financial services providers. As one of the CMA9 it runs a public developer portal exposing UK Open Banking (OBIE) APIs: public, unauthenticated Open Data APIs (ATM/branch locators, product reference data) and FAPI-secured Read/Write APIs for Account Information (AIS), Payment Initiation (PIS), Confirmation of Funds (CBPII), and Variable Recurring Payments (VRP), secured with OAuth2/OIDC, mutual-TLS, and PSD2 strong customer authentication.
+
+## Developer
+- [Developer Portal](https://developer.nationwide.co.uk/): Nationwide Open Banking developer portal (Cloudflare bot-protected).
+- [Open Banking Documentation](https://developer.nationwide.co.uk/open-banking): products, onboarding, roadmap.
+- [Open Data APIs](https://developer.nationwide.co.uk/open-banking/open-data-apis): public unauthenticated reference APIs.
+- [Support / FAQ](https://developer.nationwide.co.uk/open-banking/support/faq)
+- [Known Issues / Status](https://developer.nationwide.co.uk/open-banking/support/known-issues)
+
+## Open Data APIs (public, unauthenticated — base https://openapi.nationwide.co.uk/open-banking/v2.2)
+- [ATM Locator](https://developer.nationwide.co.uk/open-banking/open-data-apis): GET /atms — ATM locations, accessibility, services. Confirmed live.
+- [Branch Locator](https://developer.nationwide.co.uk/open-banking/open-data-apis): GET /branches — branch locations, opening times, services.
+- [Personal Current Accounts](https://developer.nationwide.co.uk/open-banking/open-data-apis): GET /personal-current-accounts — product reference data. Confirmed live.
+
+## Read/Write APIs (FAPI-secured, mTLS — base https://api.nationwide.co.uk/open-banking/v3.1)
+- [Account & Transaction Information (AIS)](https://developer.nationwide.co.uk/open-banking/account-information-apis): scope `accounts`.
+- [Payment Initiation (PIS)](https://developer.nationwide.co.uk/open-banking/payment-initiation-apis): scope `payments`.
+- [Confirmation of Funds (CBPII)](https://developer.nationwide.co.uk/open-banking/utility-apis): scope `fundsconfirmations`.
+- [Variable Recurring Payments (VRP)](https://developer.nationwide.co.uk/open-banking/payment-initiation-apis): scope `payments`, uplifting to v4.0.
+
+## Specs & Artifacts
+- OpenAPI (Open Data, Swagger 2.0): openapi/obie-open-data-atm-locator-openapi.json, openapi/obie-open-data-branch-locator-openapi.json, openapi/obie-open-data-personal-current-accounts-openapi.json
+- Authentication: authentication/nationwide-building-society-authentication.yml
+- OAuth scopes: scopes/nationwide-building-society-scopes.yml
+- API conventions (idempotency, FAPI headers, pagination): conventions/nationwide-building-society-conventions.yml
+- Error catalog (OBIE UK.OBIE.* codes): errors/nationwide-building-society-problem-types.yml
+- Conformance (OBIE/FAPI/PSD2/OAuth2/OIDC/mTLS): conformance/nationwide-building-society-conformance.yml
+- Lifecycle (v3.1 -> v4.0): lifecycle/nationwide-building-society-lifecycle.yml
+- Data model: data-model/nationwide-building-society-data-model.yml
+
+## Standard
+- [OBIE Read/Write API Standard](https://openbankinguk.github.io/read-write-api-site3/)
+- [OBIE Open Data specs](https://github.com/OpenBankingUK/opendata-api-docs-pub)
+
+## Security
+- [security.txt](https://www.nationwide.co.uk/.well-known/security.txt)
+- [Report a security vulnerability](https://www.nationwide.co.uk/help/fraud-and-security/report-security-vulnerability)

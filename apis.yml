@@ -173,6 +173,10 @@ apis:
   - type: Authentication
     url: https://developer.nationwide.co.uk/open-banking
 common:
+- type: VulnerabilityDisclosure
+  url: security/nationwide-building-society-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/nationwide-building-society-domain-security.yml
 - type: Website
   url: https://www.nationwide.co.uk/
 - type: DeveloperPortal
@@ -189,6 +193,48 @@ common:
   url: https://www.linkedin.com/company/nationwide-building-society
 - type: About
   url: https://www.nationwide.co.uk/about-us
+- type: Roadmap
+  url: https://developer.nationwide.co.uk/open-banking
+- type: SignUp
+  url: https://developer.nationwide.co.uk/
+- type: Security
+  url: https://www.nationwide.co.uk/help/fraud-and-security/report-security-vulnerability
+- type: SecurityTxt
+  url: well-known/nationwide-building-society-security.txt
+- type: WellKnown
+  url: well-known/nationwide-building-society-well-known.yml
+- type: Authentication
+  url: authentication/nationwide-building-society-authentication.yml
+- type: OAuthScopes
+  url: scopes/nationwide-building-society-scopes.yml
+- type: Conventions
+  url: conventions/nationwide-building-society-conventions.yml
+- type: Idempotency
+  url: conventions/nationwide-building-society-conventions.yml
+- type: Conformance
+  url: conformance/nationwide-building-society-conformance.yml
+- type: ErrorCatalog
+  url: errors/nationwide-building-society-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/nationwide-building-society-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/nationwide-building-society-lifecycle.yml
+- type: DataModel
+  url: data-model/nationwide-building-society-data-model.yml
+- type: MCPServer
+  url: mcp/nationwide-building-society-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/nationwide-building-society-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/nationwide-building-society-open-data-discovery.md
+- type: LLMsTxt
+  url: llms/nationwide-building-society-llms.txt
+- type: Overlay
+  url: overlays/nationwide-building-society-atm-locator-overlay.yaml
+- type: Overlay
+  url: overlays/nationwide-building-society-branch-locator-overlay.yaml
+- type: Overlay
+  url: overlays/nationwide-building-society-personal-current-accounts-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

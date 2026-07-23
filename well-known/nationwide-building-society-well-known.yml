@@ -1,0 +1,34 @@
+generated: '2026-07-23'
+method: searched
+source: live probes of Nationwide public hosts
+notes: >-
+  The corporate host www.nationwide.co.uk publishes a live RFC 9116 security.txt.
+  The Open Data host (openapi.nationwide.co.uk) and the mTLS Read/Write gateway
+  (api.nationwide.co.uk) do not expose anonymous /.well-known/ discovery documents;
+  the developer portal (developer.nationwide.co.uk) is Cloudflare bot-protected (403).
+hosts:
+- host: https://www.nationwide.co.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: nationwide-building-society-security.txt
+- host: https://openapi.nationwide.co.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 000
+    note: no anonymous response
+- host: https://api.nationwide.co.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 000
+    note: mTLS gateway; no anonymous response
+  - path: /.well-known/openid-configuration
+    status: 000
+    note: OIDC discovery is gated behind onboarding/mTLS per OBIE FAPI profile
+- host: https://developer.nationwide.co.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: Cloudflare bot protection

@@ -1,0 +1,62 @@
+generated: '2026-07-23'
+method: searched
+source: https://openbankinguk.github.io/read-write-api-site3/
+standard: OBIE Read/Write API Standard (UK Open Banking) + FAPI 1.0 Advanced
+notes: >-
+  Cross-cutting request/response semantics for Nationwide's OBIE-conformant APIs.
+  The Read/Write conventions are defined by the UK Open Banking standard that
+  Nationwide implements; the Open Data conventions are the OBIE Open Data profile.
+authentication:
+  open_data: none (public)
+  read_write: OAuth2 authorization_code + client_credentials, OIDC, mutual-TLS
+  see: authentication/nationwide-building-society-authentication.yml
+idempotency:
+  supported: true
+  scope: Payment Initiation (PIS) and VRP write operations
+  header: x-idempotency-key
+  max_length: 40
+  retention: 24 hours
+  semantics: >-
+    Each request is processed only once per x-idempotency-key value within the
+    24-hour window; a replay with the same key and identical payload returns the
+    original result rather than creating a duplicate payment. Standard OBIE
+    Read/Write behaviour that Nationwide implements.
+request_tracing:
+  header: x-fapi-interaction-id
+  format: RFC 4122 UUID
+  semantics: >-
+    Client sends a unique UUID per request; the server echoes it back (or mints
+    one) in the response header for end-to-end interaction tracing.
+  related_headers:
+  - name: x-fapi-auth-date
+    note: Time the PSU last logged in (RFC 7231 date), on AIS calls.
+  - name: x-fapi-customer-ip-address
+    note: PSU IP address when the request is PSU-present.
+  - name: x-customer-user-agent
+    note: PSU-facing client user agent.
+message_signing:
+  header: x-jws-signature
+  note: Detached JWS signature on payment/consent write requests and responses.
+pagination:
+  style: cursor-links
+  response_field: Links (Self, First, Prev, Next, Last)
+  meta_field: Meta.TotalPages
+  note: OBIE Read/Write collections page via Links/Meta; page size negotiated by the ASPSP.
+conditional_requests:
+  open_data:
+    request_headers: [If-Modified-Since, If-None-Match]
+    response_headers: [Last-Modified, ETag]
+    note: OBIE Open Data supports HTTP conditional GET for cache validation (304 Not Modified).
+versioning:
+  scheme: uri-path
+  open_data_current: v2.2 (Nationwide live host); OBIE Open Data spec v2.3/v2.4
+  read_write_current: v3.1
+  read_write_next: v4.0
+  note: See lifecycle/nationwide-building-society-lifecycle.yml
+error_envelope:
+  format: OBErrorResponse1 (UK.OBIE.* error codes)
+  media_type: application/json
+  see: errors/nationwide-building-society-problem-types.yml
+rate_limiting:
+  signal: HTTP 429 Too Many Requests
+  note: Per-TPP throttling applied by the ASPSP gateway; Open Data returns 429 under load.

@@ -1,0 +1,60 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.nationwide.co.uk/open-banking
+standard: OBIE Read/Write API Standard (FAPI 1.0 Advanced) + UK Open Banking Security Profile
+docs: https://openbankinguk.github.io/read-write-api-site3/
+summary:
+  types: [none, oauth2, openIdConnect, mutualTLS]
+  api_key_in: []
+  oauth2_flows: [authorizationCode, clientCredentials]
+  notes: >-
+    Two distinct security tiers. The OBIE Open Data APIs (ATM/branch locators,
+    product reference data) are fully public and unauthenticated. The Read/Write
+    APIs (AIS/PIS/CBPII/VRP) require the full UK Open Banking FAPI security stack.
+schemes:
+- name: OpenData
+  tier: open-data
+  type: none
+  applies_to:
+  - Nationwide ATM Locator API
+  - Nationwide Branch Locator API
+  - Nationwide Personal Current Accounts API
+  note: Public, unauthenticated OBIE Open Data. No token or key required.
+- name: OAuth2
+  tier: read-write
+  type: oauth2
+  scheme: FAPI 1.0 Advanced
+  applies_to:
+  - Nationwide Account and Transaction Information API (AIS)
+  - Nationwide Payment Initiation API (PIS)
+  - Nationwide Confirmation of Funds API (CBPII)
+  - Nationwide Variable Recurring Payments API (VRP)
+  flows:
+  - flow: authorizationCode
+    grant: authorization_code
+    use: PSU consent authorisation (redirect + PSD2 SCA), used for AIS data access and payment authorisation
+  - flow: clientCredentials
+    grant: client_credentials
+    use: TPP-only calls to create consent/intent resources before PSU authorisation
+  scopes: [openid, accounts, payments, fundsconfirmations]
+- name: OpenIDConnect
+  tier: read-write
+  type: openIdConnect
+  note: >-
+    OIDC hybrid flow with request object (JWT), id_token, and the OBIE `intent`
+    claim (openbanking_intent_id) carrying the consent id. Enforces PSD2 Strong
+    Customer Authentication.
+- name: MutualTLS
+  tier: read-write
+  type: mutualTLS
+  confirmed: true
+  evidence: >-
+    TLS handshake to api.nationwide.co.uk returns "Request CERT" then fails without
+    a presented client certificate (probed 2026-07-23).
+  note: >-
+    OBIE/eIDAS transport certificates (OBWAC/OBSeal or QWAC/QSeal) required for
+    mutual-TLS client authentication and message signing; TPPs onboard via the
+    developer portal and dynamic client registration.
+message_signing:
+  header: x-jws-signature
+  note: Detached JWS signature required on payment/consent write operations per the OBIE profile.

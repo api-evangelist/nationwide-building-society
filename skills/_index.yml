@@ -1,0 +1,7 @@
+generated: '2026-07-23'
+method: generated
+skills:
+- file: nationwide-building-society-open-data-discovery.md
+  name: Nationwide Open Data discovery
+  api: openapi/obie-open-data-atm-locator-openapi.json
+  operations: ['GET /atms', 'GET /branches', 'GET /personal-current-accounts']

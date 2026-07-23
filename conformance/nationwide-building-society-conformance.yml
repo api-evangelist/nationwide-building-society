@@ -1,0 +1,56 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.nationwide.co.uk/open-banking
+notes: >-
+  Nationwide is one of the CMA9 and implements the UK Open Banking (OBIE)
+  Read/Write and Open Data standards. The Read/Write surface conforms to the
+  FAPI 1.0 Advanced security profile and PSD2/UK regulatory requirements.
+standards:
+- id: obie-read-write
+  name: OBIE Read/Write API Standard (UK Open Banking)
+  conforms: true
+  evidence: AIS/PIS/CBPII/VRP v3.1 endpoints documented on the developer portal, uplifting to v4.0.
+- id: obie-open-data
+  name: OBIE Open Data API Standard
+  conforms: true
+  evidence: Live v2.2 ATM/branch/PCA endpoints return OBIE Open Data payloads with the standard Meta/Open Licence block.
+- id: fapi-1-advanced
+  name: FAPI 1.0 Advanced (OpenID Financial-grade API)
+  conforms: true
+  evidence: Read/Write gateway enforces mutual-TLS, request objects, JWS message signing, and OIDC per the UK security profile.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: true
+  evidence: authorization_code + client_credentials grants with accounts/payments/fundsconfirmations scopes.
+- id: oidc
+  name: OpenID Connect
+  conforms: true
+  evidence: OIDC hybrid flow with the openbanking_intent_id claim for consent binding.
+- id: mutual-tls
+  name: Mutual TLS client authentication (RFC 8705)
+  conforms: true
+  evidence: TLS "Request CERT" and handshake failure without a client certificate at api.nationwide.co.uk (probed 2026-07-23).
+- id: psd2-sca
+  name: PSD2 Strong Customer Authentication
+  conforms: true
+  evidence: PSU authorisation requires SCA per UK PSD2 regulatory technical standards.
+- id: eidas-obie-certs
+  name: eIDAS / OBIE certificates (OBWAC/OBSeal, QWAC/QSeal)
+  conforms: true
+  evidence: TPP onboarding requires OBIE/eIDAS transport and signing certificates.
+- id: rfc9116-security-txt
+  name: RFC 9116 security.txt
+  conforms: true
+  evidence: Live security.txt at https://www.nationwide.co.uk/.well-known/security.txt
+- id: http-conditional-requests
+  name: HTTP conditional requests (RFC 7232)
+  conforms: true
+  evidence: Open Data GET supports If-Modified-Since / If-None-Match / ETag / 304.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: Errors use the OBIE OBErrorResponse1 envelope (application/json), not application/problem+json.
+regulatory:
+  authorised_by: Prudential Regulation Authority (PRA)
+  regulated_by: [Financial Conduct Authority (FCA), Prudential Regulation Authority (PRA)]
+  regime: UK PSD2 / CMA Open Banking Order (CMA9)

@@ -1,0 +1,28 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.nationwide.co.uk/open-banking
+notes: >-
+  Nationwide tracks the UK Open Banking (OBIE) standard release train. The
+  Read/Write APIs are uplifting from v3.1 to v4.0, with v3 endpoints scheduled
+  for retirement from early 2026 per the developer-portal roadmap.
+versioning:
+  scheme: uri-path
+  open_data:
+    current: v2.2 (live Nationwide host)
+    spec: OBIE Open Data v2.3 / v2.4
+  read_write:
+    current: v3.1
+    next: v4.0
+  docs: https://developer.nationwide.co.uk/open-banking
+deprecation:
+  policy: OBIE standard release train; v3.1 Read/Write endpoints retiring toward v4.0.
+  v3_retirement: early 2026
+  sunset_header: unknown
+  policy_url: https://developer.nationwide.co.uk/open-banking/support/known-issues
+status_page: https://developer.nationwide.co.uk/open-banking/support/known-issues
+roadmap: https://developer.nationwide.co.uk/open-banking
+sla:
+  note: >-
+    Availability and performance are reported to the FCA/OBIE under the CMA Order;
+    no separate public SLA document was located.
+deprecated_operations: []

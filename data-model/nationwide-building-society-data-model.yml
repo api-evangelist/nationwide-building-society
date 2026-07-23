@@ -1,0 +1,66 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/*-openapi.json (OBIE Open Data) + OBIE Read/Write standard
+notes: >-
+  Entity graph derived from the harvested OBIE Open Data specs and the documented
+  OBIE Read/Write resource model. Open Data entities are confirmed from the live
+  specs; Read/Write entities are the OBIE standard resources the AIS/PIS/CBPII/VRP
+  APIs expose (not independently downloadable — the gateway is mTLS-gated).
+entities:
+- name: ATM
+  api: Nationwide ATM Locator API
+  source: openapi/obie-open-data-atm-locator-openapi.json
+  key_fields: [Identification, Location, Accessibility, Currency, Services]
+- name: Branch
+  api: Nationwide Branch Locator API
+  source: openapi/obie-open-data-branch-locator-openapi.json
+  key_fields: [Identification, Name, OpeningTimes, Location, Services, Accessibility]
+- name: PersonalCurrentAccount
+  api: Nationwide Personal Current Accounts API
+  source: openapi/obie-open-data-personal-current-accounts-openapi.json
+  key_fields: [Identification, Name, Fees, EligibilityData, Overdraft, FeaturesAndBenefits]
+- name: AccountAccessConsent
+  api: AIS
+  key_fields: [ConsentId, Permissions, Status, ExpirationDateTime]
+- name: Account
+  api: AIS
+  key_fields: [AccountId, Currency, AccountType, Nickname]
+- name: Balance
+  api: AIS
+  key_fields: [AccountId, Amount, CreditDebitIndicator, Type]
+- name: Transaction
+  api: AIS
+  key_fields: [TransactionId, AccountId, Amount, BookingDateTime, Status]
+- name: DomesticPaymentConsent
+  api: PIS
+  key_fields: [ConsentId, Initiation, Status]
+- name: DomesticPayment
+  api: PIS
+  key_fields: [DomesticPaymentId, ConsentId, Status]
+- name: FundsConfirmationConsent
+  api: CBPII
+  key_fields: [ConsentId, DebtorAccount, Status]
+- name: VRPConsent
+  api: VRP
+  key_fields: [ConsentId, ControlParameters, Status]
+relationships:
+- from: Account
+  to: AccountAccessConsent
+  type: belongs_to
+  via: ConsentId
+- from: Balance
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: Transaction
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: DomesticPayment
+  to: DomesticPaymentConsent
+  type: belongs_to
+  via: ConsentId
+- from: VRPConsent
+  to: Account
+  type: has_one
+  via: DebtorAccount

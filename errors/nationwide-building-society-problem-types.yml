@@ -1,0 +1,94 @@
+generated: '2026-07-23'
+method: searched
+source: >-
+  openapi/*-openapi.json (Open Data 4xx/5xx responses) +
+  https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/read-write-api-specification-standard-error-codes/latest/
+format: obie-oberrorresponse1
+envelope:
+  media_type: application/json
+  schema: OBErrorResponse1
+  fields:
+    Code: HTTP status code text
+    Id: unique request/interaction id (x-fapi-interaction-id)
+    Message: high-level message
+    Errors: array of { ErrorCode (UK.OBIE.*), Message, Path, Url }
+open_data_http_responses:
+  note: Derived from the harvested OBIE Open Data Swagger specs (ATM/Branch/PCA).
+  responses:
+  - status: 400
+    title: Bad Request
+    source_operation: openapi/obie-open-data-atm-locator-openapi.json#GET /atms
+  - status: 408
+    title: Request Timeout
+  - status: 429
+    title: Too Many Requests
+  - status: 500
+    title: Internal Server Error
+  - status: 503
+    title: Service Unavailable
+read_write_problem_codes:
+  note: >-
+    Standard OBIE Read/Write error codes that Nationwide's AIS/PIS/CBPII/VRP APIs
+    return per the UK Open Banking standard. HTTP status is 400 for most field/
+    resource errors unless noted.
+  problems:
+  - code: UK.OBIE.Field.Missing
+    http: 400
+    title: A mandatory field was not provided.
+    action: Include the required field in the request payload.
+  - code: UK.OBIE.Field.Invalid
+    http: 400
+    title: A field contained invalid data.
+    action: Correct the field value to a valid format/value.
+  - code: UK.OBIE.Field.Expected
+    http: 400
+    title: A field was expected but not present given other supplied fields.
+  - code: UK.OBIE.Field.Unexpected
+    http: 400
+    title: An unexpected field was supplied.
+  - code: UK.OBIE.Header.Missing
+    http: 400
+    title: A mandatory header (e.g. x-fapi-interaction-id, x-idempotency-key) was not provided.
+  - code: UK.OBIE.Header.Invalid
+    http: 400
+    title: A supplied header value was invalid.
+  - code: UK.OBIE.Resource.NotFound
+    http: 400
+    title: The requested resource (e.g. consent) was not found.
+  - code: UK.OBIE.Resource.InvalidConsentStatus
+    http: 400
+    title: The consent is not in a status that permits the operation.
+  - code: UK.OBIE.Resource.InvalidFormat
+    http: 400
+    title: The resource identifier or body was malformed.
+  - code: UK.OBIE.Resource.ConsentMismatch
+    http: 400
+    title: The resource does not match the authorised consent.
+  - code: UK.OBIE.Reauthenticate
+    http: 403
+    title: Re-authentication of the PSU is required.
+    action: Restart the consent authorisation flow with SCA.
+  - code: UK.OBIE.Rules.ResourceAlreadyExists
+    http: 400
+    title: An idempotent resource with the same key already exists.
+  - code: UK.OBIE.Rules.FailsControl
+    http: 400
+    title: The request failed a business/control rule.
+  - code: UK.OBIE.Signature.Missing
+    http: 400
+    title: A required detached JWS signature (x-jws-signature) was absent.
+  - code: UK.OBIE.Signature.Invalid
+    http: 400
+    title: The detached JWS signature failed validation.
+  - code: UK.OBIE.Signature.MalformedOrInvalid
+    http: 400
+    title: The JWS signature header was malformed.
+  - code: UK.OBIE.Unsupported.AccountIdentifier
+    http: 400
+    title: The account identifier scheme is not supported.
+  - code: UK.OBIE.Unsupported.Currency
+    http: 400
+    title: The requested currency is not supported.
+  - code: UK.OBIE.UnexpectedError
+    http: 500
+    title: An unexpected error occurred processing the request.

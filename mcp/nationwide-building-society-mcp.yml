@@ -1,0 +1,27 @@
+generated: '2026-07-23'
+method: derived
+status: candidate
+source: openapi/*-openapi.json (OBIE Open Data)
+notes: >-
+  No official Nationwide MCP server exists. This is a DERIVED candidate tool list
+  covering only the public, unauthenticated OBIE Open Data endpoints — the surface
+  an agent can call with no credentials. The Read/Write APIs (AIS/PIS/CBPII/VRP)
+  are excluded: they are mTLS/FAPI-gated and require PSU consent, unsuitable for an
+  anonymous MCP tool.
+server:
+  name: nationwide-open-data
+  transport: http
+  url: null
+tools:
+- name: list_atms
+  description: List Nationwide ATM locations, accessibility, currencies, and services (OBIE Open Data).
+  source_operation: openapi/obie-open-data-atm-locator-openapi.json#GET /atms
+  input_schema:
+    If-Modified-Since: { in: header, required: false }
+    If-None-Match: { in: header, required: false }
+- name: list_branches
+  description: List Nationwide branch locations, opening times, accessibility, and services (OBIE Open Data).
+  source_operation: openapi/obie-open-data-branch-locator-openapi.json#GET /branches
+- name: list_personal_current_accounts
+  description: List Nationwide personal current account products, fees, eligibility, and features (OBIE Open Data).
+  source_operation: openapi/obie-open-data-personal-current-accounts-openapi.json#GET /personal-current-accounts

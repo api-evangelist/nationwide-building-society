@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Nationwide Personal Current Accounts (OBIE Open Data)
+  version: 1.0.0
+extends: openapi/obie-open-data-personal-current-accounts-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: Nationwide Building Society
+    x-apievangelist-standard: OBIE Open Data API
+    x-apievangelist-tier: open-data
+    x-apievangelist-auth: none (public, unauthenticated)
+    x-apievangelist-confirmed-host: https://openapi.nationwide.co.uk/open-banking/v2.2
+    x-apievangelist-confirmed-live: true
+- target: $.paths['/personal-current-accounts'].get
+  update:
+    operationId: listPersonalCurrentAccounts
+    x-apievangelist-note: Confirmed HTTP 200 application/json, 6 PCA products (probed 2026-07-23).

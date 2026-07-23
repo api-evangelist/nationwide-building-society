@@ -1,0 +1,6 @@
+Contact: mailto:vulnerabilitydisclosure@nationwide.co.uk
+Policy: https://www.nationwide.co.uk/help/fraud-and-security/report-security-vulnerability
+Hiring: https://www.nationwide-jobs.co.uk/jobs/
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+

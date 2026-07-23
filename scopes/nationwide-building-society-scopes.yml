@@ -1,0 +1,44 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.nationwide.co.uk/open-banking
+standard: OBIE Read/Write API Standard (UK Open Banking)
+docs: https://openbankinguk.github.io/read-write-api-site3/
+notes: >-
+  OAuth 2.0 scopes in UK Open Banking are coarse-grained and fixed at client
+  registration. Fine-grained permissions are expressed through OBIE consent
+  "intents" (account-access-consent, payment-order consents,
+  funds-confirmation-consent) that the PSU authorises, not through additional
+  scopes. Only the four canonical OBIE scopes below apply to Nationwide's
+  Read/Write surface. The Open Data APIs use no scopes (public).
+schemes:
+- name: OAuth2
+  flows:
+  - flow: authorizationCode
+  - flow: clientCredentials
+scopes:
+- scope: openid
+  description: OpenID Connect authentication; returns an id_token binding the PSU authorisation to the consent intent.
+  flows: [authorizationCode]
+- scope: accounts
+  description: >-
+    Access to the Account and Transaction Information (AIS) APIs — accounts,
+    balances, transactions, beneficiaries, standing orders, direct debits,
+    scheduled payments, statements, parties and products, subject to an
+    authorised account-access-consent.
+  flows: [authorizationCode, clientCredentials]
+  apis: [Nationwide Account and Transaction Information API (AIS)]
+- scope: payments
+  description: >-
+    Access to the Payment Initiation (PIS) and Variable Recurring Payments (VRP)
+    APIs — create and authorise domestic/international payment-order consents and
+    VRP consents, then submit payment orders.
+  flows: [authorizationCode, clientCredentials]
+  apis:
+  - Nationwide Payment Initiation API (PIS)
+  - Nationwide Variable Recurring Payments API (VRP)
+- scope: fundsconfirmations
+  description: >-
+    Access to the Confirmation of Funds (CBPII) API — create a
+    funds-confirmation-consent and check whether funds are available on an account.
+  flows: [authorizationCode, clientCredentials]
+  apis: [Nationwide Confirmation of Funds API (CBPII)]

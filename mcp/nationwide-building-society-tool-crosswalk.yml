@@ -1,0 +1,42 @@
+generated: '2026-07-23'
+method: derived
+source: mcp/nationwide-building-society-mcp.yml + openapi/*-openapi.json
+notes: >-
+  Crosswalk binding the derived Open Data MCP candidate tools to their backing
+  OBIE Open Data operations. Operations carry no operationId in the OBIE Swagger,
+  so they are bound by method+path (verified present in each spec).
+surfaces:
+  openapi:
+  - openapi/obie-open-data-atm-locator-openapi.json
+  - openapi/obie-open-data-branch-locator-openapi.json
+  - openapi/obie-open-data-personal-current-accounts-openapi.json
+  graphql: null
+  mcp:
+    url: null
+    status: candidate
+crosswalk:
+- tool: list_atms
+  category: open-data
+  rest: ['GET /atms']
+  binding: rest
+  confidence: high
+- tool: list_branches
+  category: open-data
+  rest: ['GET /branches']
+  binding: rest
+  confidence: high
+- tool: list_personal_current_accounts
+  category: open-data
+  rest: ['GET /personal-current-accounts']
+  binding: rest
+  confidence: high
+mcp_only: []
+rest_only:
+- group: read-write (AIS/PIS/CBPII/VRP)
+  reason: mTLS/FAPI-gated, PSU-consent required; intentionally excluded from anonymous MCP tools.
+coverage:
+  tools_named: 3
+  tools_bound: 3
+  mcp_only: 0
+  rest_ops_total: 3
+  rest_ops_with_tool: 3
