@@ -1,0 +1,194 @@
+aid: nationwide-building-society
+url: https://raw.githubusercontent.com/api-evangelist/nationwide-building-society/refs/heads/main/apis.yml
+name: Nationwide Building Society
+kind: company
+description: Nationwide Building Society is the world's largest building society and
+  one of the UK's biggest retail financial services providers, headquartered in Swindon,
+  England. As a mutual it is owned by and run for the benefit of its members rather
+  than external shareholders, offering current accounts, mortgages, savings, and
+  personal loans across a large branch and digital network. Nationwide is authorised
+  by the Prudential Regulation Authority and regulated by the Financial Conduct
+  Authority and the PRA. As one of the CMA9 - the nine largest current-account
+  providers mandated by the UK Competition and Markets Authority to deliver Open
+  Banking - Nationwide operates a public developer portal that publishes UK Open
+  Banking APIs conformant to the Open Banking Implementation Entity (OBIE)
+  standards - public, unauthenticated Open Data APIs (ATM and branch locators, personal and
+  business current account product reference data) and FAPI-secured Read/Write APIs
+  for Account and Transaction Information (AIS), Payment Initiation (PIS),
+  Confirmation of Funds (CBPII), and Variable Recurring Payments (VRP), secured
+  with OAuth2/OIDC, mutual-TLS client authentication, and PSD2 strong customer
+  authentication using OBIE/eIDAS certificates.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-23'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial Services
+- Banking
+- Building Society
+- Open Banking
+- PSD2
+- OBIE
+- CMA9
+- United Kingdom
+- Payments
+- Account Information
+created: '2026-07-23'
+modified: '2026-07-23'
+specificationVersion: '0.19'
+apis:
+- aid: nationwide-building-society:nationwide-atm-locator-api
+  name: Nationwide ATM Locator API
+  description: Public, unauthenticated OBIE Open Data API listing the location,
+    accessibility, supported currencies, and services of Nationwide ATMs across the
+    UK. Confirmed live (HTTP 200, application/json) at v2.2.
+  humanURL: https://developer.nationwide.co.uk/open-banking/open-data-apis
+  baseURL: https://openapi.nationwide.co.uk/open-banking/v2.2
+  tags:
+  - Open Data
+  - ATMs
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-open-data-atm-locator-openapi.json
+  - type: Documentation
+    url: https://developer.nationwide.co.uk/open-banking/open-data-apis
+  - type: APIReference
+    url: https://openbankinguk.github.io/opendata-api-docs-pub/v2.4.0/
+- aid: nationwide-building-society:nationwide-branch-locator-api
+  name: Nationwide Branch Locator API
+  description: Public, unauthenticated OBIE Open Data API listing Nationwide branch
+    locations, opening hours, accessibility, and services. Documented Open Data type
+    on the developer portal (the v2.2 branches path returned HTTP 403 on unauthenticated
+    probe from this environment).
+  humanURL: https://developer.nationwide.co.uk/open-banking/open-data-apis
+  baseURL: https://openapi.nationwide.co.uk/open-banking/v2.2
+  tags:
+  - Open Data
+  - Branches
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-open-data-branch-locator-openapi.json
+  - type: Documentation
+    url: https://developer.nationwide.co.uk/open-banking/open-data-apis
+  - type: APIReference
+    url: https://openbankinguk.github.io/opendata-api-docs-pub/v2.4.0/
+- aid: nationwide-building-society:nationwide-personal-current-accounts-api
+  name: Nationwide Personal Current Accounts API
+  description: Public, unauthenticated OBIE Open Data API publishing reference data
+    for Nationwide personal current account products, features, fees, and eligibility.
+    Confirmed live (HTTP 200, application/json) at v2.2.
+  humanURL: https://developer.nationwide.co.uk/open-banking/open-data-apis
+  baseURL: https://openapi.nationwide.co.uk/open-banking/v2.2
+  tags:
+  - Open Data
+  - Personal Current Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-open-data-personal-current-accounts-openapi.json
+  - type: Documentation
+    url: https://developer.nationwide.co.uk/open-banking/open-data-apis
+  - type: APIReference
+    url: https://openbankinguk.github.io/opendata-api-docs-pub/v2.4.0/
+- aid: nationwide-building-society:nationwide-account-information-api
+  name: Nationwide Account and Transaction Information API (AIS)
+  description: OBIE Read/Write Account and Transaction Information (AIS) API providing
+    consented access to Nationwide account, balance, and transaction data for
+    authorised third-party providers. FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2
+    SCA); requires developer-portal onboarding and OBIE/eIDAS certificates.
+  humanURL: https://developer.nationwide.co.uk/open-banking/account-information-apis
+  baseURL: https://api.nationwide.co.uk/open-banking/v3.1/aisp
+  tags:
+  - Account Information
+  - AIS
+  - Read/Write
+  properties:
+  - type: Documentation
+    url: https://developer.nationwide.co.uk/open-banking/account-information-apis
+  - type: APIReference
+    url: https://developer.nationwide.co.uk/open-banking/account-information-apis
+  - type: Authentication
+    url: https://developer.nationwide.co.uk/open-banking
+- aid: nationwide-building-society:nationwide-payment-initiation-api
+  name: Nationwide Payment Initiation API (PIS)
+  description: OBIE Read/Write Payment Initiation (PIS) API allowing authorised
+    third-party providers to initiate domestic and other payments from Nationwide
+    accounts with customer consent. FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2 SCA).
+  humanURL: https://developer.nationwide.co.uk/open-banking/payment-initiation-apis
+  baseURL: https://api.nationwide.co.uk/open-banking/v3.1/pisp
+  tags:
+  - Payment Initiation
+  - PIS
+  - Read/Write
+  properties:
+  - type: Documentation
+    url: https://developer.nationwide.co.uk/open-banking/payment-initiation-apis
+  - type: APIReference
+    url: https://developer.nationwide.co.uk/open-banking/payment-initiation-apis
+  - type: Authentication
+    url: https://developer.nationwide.co.uk/open-banking
+- aid: nationwide-building-society:nationwide-confirmation-of-funds-api
+  name: Nationwide Confirmation of Funds API (CBPII)
+  description: OBIE Read/Write Confirmation of Funds (CBPII) utility API letting a
+    consented card-based payment instrument issuer check whether funds are available
+    on a Nationwide account. FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2 SCA).
+  humanURL: https://developer.nationwide.co.uk/open-banking/utility-apis
+  baseURL: https://api.nationwide.co.uk/open-banking/v3.1/cbpii
+  tags:
+  - Confirmation of Funds
+  - CBPII
+  - Read/Write
+  properties:
+  - type: Documentation
+    url: https://developer.nationwide.co.uk/open-banking/utility-apis
+  - type: APIReference
+    url: https://developer.nationwide.co.uk/open-banking/utility-apis
+  - type: Authentication
+    url: https://developer.nationwide.co.uk/open-banking
+- aid: nationwide-building-society:nationwide-variable-recurring-payments-api
+  name: Nationwide Variable Recurring Payments API (VRP)
+  description: OBIE Read/Write Variable Recurring Payments (VRP) API enabling
+    consented sweeping and recurring payment mandates from Nationwide accounts.
+    FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2 SCA); endpoints uplifted toward v4.0
+    per the developer portal roadmap.
+  humanURL: https://developer.nationwide.co.uk/open-banking/payment-initiation-apis
+  baseURL: https://api.nationwide.co.uk/open-banking/v3.1/pisp
+  tags:
+  - Variable Recurring Payments
+  - VRP
+  - Read/Write
+  properties:
+  - type: Documentation
+    url: https://developer.nationwide.co.uk/open-banking/payment-initiation-apis
+  - type: APIReference
+    url: https://developer.nationwide.co.uk/open-banking/payment-initiation-apis
+  - type: Authentication
+    url: https://developer.nationwide.co.uk/open-banking
+common:
+- type: Website
+  url: https://www.nationwide.co.uk/
+- type: DeveloperPortal
+  url: https://developer.nationwide.co.uk/
+- type: Documentation
+  url: https://developer.nationwide.co.uk/open-banking
+- type: GettingStarted
+  url: https://developer.nationwide.co.uk/open-banking/open-data-apis
+- type: Support
+  url: https://developer.nationwide.co.uk/open-banking/support/faq
+- type: StatusPage
+  url: https://developer.nationwide.co.uk/open-banking/support/known-issues
+- type: LinkedIn
+  url: https://www.linkedin.com/company/nationwide-building-society
+- type: About
+  url: https://www.nationwide.co.uk/about-us
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

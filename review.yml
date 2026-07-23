@@ -1,0 +1,96 @@
+aid: nationwide-building-society
+name: Nationwide Building Society
+review:
+  question: >-
+    Does Nationwide Building Society expose a genuine public Open Banking API
+    surface - a documented developer portal, a confirmed live Open Data endpoint,
+    and OBIE-conformant Read/Write APIs - and what is the authentication model and
+    spec provenance?
+  answer: true
+  date: '2026-07-23'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Nationwide Building Society is one of the CMA9 and runs a real, documented
+    developer portal at https://developer.nationwide.co.uk/ (portal pages return
+    HTTP 403 to unauthenticated bots via Cloudflare, but are confirmed to exist and
+    are indexed with stable product URLs for Open Data, Account Information,
+    Payment Initiation, and Utility APIs). The portal roadmap shows OBIE Read/Write
+    endpoints uplifting from v3.1 to v4.0, with v3 endpoints retired from early 2026.
+
+    A PUBLIC, unauthenticated OBIE Open Data surface was CONFIRMED LIVE. The ATM
+    Locator and Personal Current Accounts endpoints both returned HTTP 200 with
+    application/json OBIE Open Data payloads (ATMs: 1,266 results; PCA: 6 products),
+    carrying the standard OBIE meta block with the Open Licence and TermsOfUse
+    references. The confirmed Open Data base URL is
+    https://openapi.nationwide.co.uk/open-banking/v2.2. The Branch Locator path
+    under the same host returned HTTP 403 to this environment's probe and is
+    represented as documented-but-unverified.
+
+    The OBIE Read/Write surface is hosted separately at
+    https://api.nationwide.co.uk (155.131.54.10). A TLS handshake to that host
+    returns a "Request CERT" during negotiation and then a handshake failure when
+    no client certificate is presented - direct evidence that the gateway enforces
+    mutual-TLS (mTLS) client authentication. This is the FAPI-grade security model
+    for AIS/PIS/CBPII/VRP: OAuth2/OIDC authorization, PSD2 strong customer
+    authentication, and mTLS/dynamic client registration using OBIE/eIDAS
+    certificates obtained after developer-portal onboarding. No credentials were
+    fabricated and no authenticated Read/Write call was made.
+
+    Spec provenance: no Nationwide-proprietary OpenAPI/Swagger was publicly
+    downloadable (the portal is bot-protected). The specs harvested into openapi/
+    are the SHARED OBIE Open Data STANDARD contracts from
+    github.com/OpenBankingUK/opendata-api-docs-pub - ATM Locator v2.3.0, Branch
+    Locator v2.3.0, and Personal Current Accounts v2.4.0 (Swagger 2.0) - which the
+    live Nationwide v2.2 endpoints conform to. They are the standard, not a
+    Nationwide-issued contract, and are labelled as such.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://openapi.nationwide.co.uk/open-banking/v2.2
+      documented: true
+      confirmedLive: true
+      note: Public unauthenticated OBIE Open Data. ATMs and Personal Current Accounts confirmed HTTP 200 application/json.
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.nationwide.co.uk/open-banking/v3.1
+      documented: true
+      confirmedLive: false
+      note: OBIE Read/Write (AIS/PIS/CBPII/VRP). mTLS-enforced gateway - server requests a client certificate and fails the TLS handshake without one.
+  authModel:
+    openData: none (public, unauthenticated)
+    readWrite:
+      - OAuth2 / OpenID Connect (FAPI)
+      - PSD2 Strong Customer Authentication (SCA)
+      - Mutual-TLS client authentication (confirmed via TLS Request CERT)
+      - OBIE / eIDAS certificates + dynamic client registration
+  endpointsConfirmed:
+    - "GET https://openapi.nationwide.co.uk/open-banking/v2.2/atms -> 200 (1266 ATMs)"
+    - "GET https://openapi.nationwide.co.uk/open-banking/v2.2/personal-current-accounts -> 200 (6 products)"
+  endpointsProbedOther:
+    - "GET https://openapi.nationwide.co.uk/open-banking/v2.2/branches -> 403"
+    - "GET https://openapi.nationwide.co.uk/open-banking/v2.2/business-current-accounts -> 403"
+    - "TLS https://api.nationwide.co.uk/open-banking/... -> mTLS handshake failure (client cert required)"
+  specProvenance:
+    proprietary: false
+    standard: OBIE Open Data API Specification (opendata-api-docs-pub)
+    harvested:
+      - openapi/obie-open-data-atm-locator-openapi.json (ATM Locator v2.3.0, Swagger 2.0)
+      - openapi/obie-open-data-branch-locator-openapi.json (Branch Locator v2.3.0, Swagger 2.0)
+      - openapi/obie-open-data-personal-current-accounts-openapi.json (PCA v2.4.0, Swagger 2.0)
+sources:
+  - url: https://developer.nationwide.co.uk/open-banking
+    type: DeveloperPortal
+    note: Real developer portal (HTTP 403 to bots via Cloudflare); products - Open Data, Account Information, Payment Initiation, Utility APIs.
+  - url: https://openapi.nationwide.co.uk/open-banking/v2.2/atms
+    type: APIReference
+    note: Confirmed live HTTP 200 application/json OBIE Open Data, 1266 ATMs.
+  - url: https://openapi.nationwide.co.uk/open-banking/v2.2/personal-current-accounts
+    type: APIReference
+    note: Confirmed live HTTP 200 application/json OBIE Open Data, 6 PCA products.
+  - url: https://api.nationwide.co.uk
+    type: APIReference
+    note: OBIE Read/Write mTLS gateway - TLS Request CERT then handshake failure without a client certificate.
+  - url: https://github.com/OpenBankingUK/opendata-api-docs-pub
+    type: OpenAPI
+    note: Source of the shared OBIE Open Data standard specs harvested into openapi/.
