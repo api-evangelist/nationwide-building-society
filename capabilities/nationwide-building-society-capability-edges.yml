@@ -1,0 +1,44 @@
+slug: nationwide-building-society
+provider: Nationwide Building Society
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: ATM
+  spec_file: nationwide-building-society-atm-api-openapi.yml
+  capability_id: BC-1300.50
+  capability_id_l1: BC-1300
+  capability_name: Banking Channels Management
+  confidence: 0.82
+  evidence: 'openapi description: ''Latest Swagger specification for OpenData ATM Locator''; GET /atms'
+  reason: ATM locator data is physical banking channel information; Banking Channels Management explicitly
+    covers ATM channel operations.
+- tag: Branch
+  spec_file: nationwide-building-society-branch-api-openapi.yml
+  capability_id: BC-1300.50
+  capability_id_l1: BC-1300
+  capability_name: Banking Channels Management
+  confidence: 0.82
+  evidence: 'openapi description: ''Latest Swagger specification for OpenData Branch Locator''; GET /branches'
+  reason: Branch locator data is branch channel information, matching Banking Channels Management (branch,
+    ATM, online).
+- tag: PCA
+  spec_file: nationwide-building-society-pca-api-openapi.yml
+  capability_id: BC-1310.10
+  capability_id_l1: BC-1310
+  capability_name: Product Catalogue Management
+  confidence: 0.7
+  evidence: 'openapi description: ''Latest Swagger specification for OpenData Personal Current Account
+    data''; GET /personal-current-accounts'
+  reason: Open Data PCA endpoint publishes product-level information about the personal current account
+    range (a product catalogue disclosure), not customer account servicing. Confidence held down by absence
+    of schemas/operation summaries.

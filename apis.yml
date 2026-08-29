@@ -188,6 +188,9 @@ apis:
   - type: APIReference
     url: https://openbankinguk.github.io/opendata-api-docs-pub/v2.4.0/
 common:
+- type: CapabilityMap
+  url: capabilities/nationwide-building-society-capability-edges.yml
+  name: Nationwide Building Society Business Capability Map
 - type: VulnerabilityDisclosure
   url: security/nationwide-building-society-vulnerability-disclosure.yml
 - type: DomainSecurity
