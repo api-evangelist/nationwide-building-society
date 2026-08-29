@@ -18,6 +18,18 @@ description: Nationwide Building Society is the world's largest building society
   Confirmation of Funds (CBPII), and Variable Recurring Payments (VRP), secured
   with OAuth2/OIDC, mutual-TLS client authentication, and PSD2 strong customer
   authentication using OBIE/eIDAS certificates.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
