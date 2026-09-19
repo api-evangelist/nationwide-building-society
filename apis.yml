@@ -98,6 +98,10 @@ apis:
   baseURL: https://api.nationwide.co.uk/open-banking/v3.1/pisp
   tags:
   - Payment Initiation
+  - PI
+  - Read/Write
+  tags_raw:
+  - Payment Initiation
   - PIS
   - Read/Write
   properties:
