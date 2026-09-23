@@ -1,0 +1,28 @@
+{
+  "provider": "nationwide-building-society",
+  "sources": [
+    "_original/obie-open-data-atm-locator-openapi.json",
+    "_original/obie-open-data-branch-locator-openapi.json",
+    "_original/obie-open-data-personal-current-accounts-openapi.json"
+  ],
+  "outputs": [
+    "nationwide-building-society-atm-api-openapi.yml",
+    "nationwide-building-society-branch-api-openapi.yml",
+    "nationwide-building-society-pca-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "obie-open-data-atm-locator-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "obie-open-data-branch-locator-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "obie-open-data-personal-current-accounts-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "nationwide-building-society-atm-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nationwide-building-society-branch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nationwide-building-society-pca-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
