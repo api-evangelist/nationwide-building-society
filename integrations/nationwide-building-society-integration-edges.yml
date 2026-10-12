@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/nationwide-building-society/integrations
+- https://n8n.io/integrations/nationwide-building-society/
+- https://composio.dev/toolkits/nationwide-building-society
+- https://monid.ai/tools/nationwide-building-society
+checked:
+- https://composio.dev/toolkits/nationwide-building-society
+- https://monid.ai/tools/nationwide-building-society
+- https://n8n.io/integrations/nationwide-building-society/
+- https://zapier.com/apps/nationwide-building-society/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
