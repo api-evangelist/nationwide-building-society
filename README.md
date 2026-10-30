@@ -1,4 +1,4 @@
-# Nationwide Building Society (nationwide-building-society)
+# Nationwide Building Society
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,146 +64,127 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Nationwide Building Society is the world's largest building society and one of the UK's biggest retail financial services providers, headquartered in Swindon, England. As a mutual it is owned by and run for the benefit of its members. As one of the CMA9, Nationwide operates a public developer portal publishing UK Open Banking APIs conformant to the Open Banking Implementation Entity (OBIE) standards - public Open Data APIs plus FAPI-secured Read/Write APIs for account information, payments, confirmation of funds, and variable recurring payments.
+Nationwide Building Society is the world's largest building society and one of the UK's biggest retail financial services providers, headquartered in Swindon, England. As a mutual it is owned by and run for the benefit of its members rather than external shareholders, offering current accounts, mortgages, savings, and personal loans across a large branch and digital network. Nationwide is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the PRA. As one of the CMA9 - the nine largest current-account providers mandated by the UK Competition and Markets Authority to deliver Open Banking - Nationwide operates a public developer portal that publishes UK Open Banking APIs conformant to the Open Banking Implementation Entity (OBIE) standards - public, unauthenticated Open Data APIs (ATM and branch locators, personal and business current account product reference data) and FAPI-secured Read/Write APIs for Account and Transaction Information (AIS), Payment Initiation (PIS), Confirmation of Funds (CBPII), and Variable Recurring Payments (VRP), secured with OAuth2/OIDC, mutual-TLS client authentication, and PSD2 strong customer authentication using OBIE/eIDAS certificates.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nationwide-building-society/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nationwide-building-society/refs/heads/main/apis.yml)
+**Areas:** Financial Services · Banking · Building Society · Open Banking · PSD2 · OBIE · CMA9 · United Kingdom · Payments · Account Information
 
-## Tags
+## Nationwide Building Society on APIs.io
 
-- Financial Services
-- Banking
-- Building Society
-- Open Banking
-- PSD2
-- OBIE
-- CMA9
-- United Kingdom
-- Payments
-- Account Information
+Everything profiled for Nationwide Building Society is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nationwide-building-society/](https://apis.io/providers/nationwide-building-society/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-23
-- **Modified:** 2026-07-23
+- [Nationwide Account and Transaction Information API (AIS)](https://apis.io/apis/nationwide-building-society/nationwide-account-information-api/) — OBIE Read/Write Account and Transaction Information (AIS) API providing consented access to Nationwide account, balance, and transaction data for authorised…
+- [Nationwide Payment Initiation API (PIS)](https://apis.io/apis/nationwide-building-society/nationwide-payment-initiation-api/) — OBIE Read/Write Payment Initiation (PIS) API allowing authorised third-party providers to initiate domestic and other payments from Nationwide accounts with…
+- [Nationwide Confirmation of Funds API (CBPII)](https://apis.io/apis/nationwide-building-society/nationwide-confirmation-of-funds-api/) — OBIE Read/Write Confirmation of Funds (CBPII) utility API letting a consented card-based payment instrument issuer check whether funds are available on a…
+- [Nationwide Variable Recurring Payments API (VRP)](https://apis.io/apis/nationwide-building-society/nationwide-variable-recurring-payments-api/) — OBIE Read/Write Variable Recurring Payments (VRP) API enabling consented sweeping and recurring payment mandates from Nationwide accounts. FAPI-secured…
+- [Nationwide Building Society ATM API](https://apis.io/apis/nationwide-building-society/nationwide-building-society-atm-api/) — Endpoint for getting ATM data
+- [Nationwide Building Society Branch API](https://apis.io/apis/nationwide-building-society/nationwide-building-society-branch-api/) — Endpoint for getting Branch data
+- [Nationwide Building Society PCA API](https://apis.io/apis/nationwide-building-society/nationwide-building-society-pca-api/) — Endpoint for getting Personal Current Account data
 
-## APIs
+### Published properties
 
-### Nationwide ATM Locator API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public, unauthenticated OBIE Open Data API listing Nationwide ATM locations, accessibility, supported currencies, and services. Confirmed live (HTTP 200, application/json) at v2.2.
+#### MCP servers (1)
 
-- **Human URL:** [https://developer.nationwide.co.uk/open-banking/open-data-apis](https://developer.nationwide.co.uk/open-banking/open-data-apis)
-- **Base URL:** `https://openapi.nationwide.co.uk/open-banking/v2.2`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [nationwide-open-data](https://apis.io/servers/nationwide-building-society/nationwide-open-data/)
 
-- Open Data
-- ATMs
+#### Collections (3)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [OpenAPI](openapi/obie-open-data-atm-locator-openapi.json) — shared OBIE Open Data standard (ATM Locator v2.3.0)
-- [Documentation](https://developer.nationwide.co.uk/open-banking/open-data-apis)
-- [API Reference](https://openbankinguk.github.io/opendata-api-docs-pub/v2.4.0/)
+- [Open Data API](https://apis.io/collections/nationwide-building-society/open-obie-open-data-atm-locator/)
+- [Open Data API](https://apis.io/collections/nationwide-building-society/open-obie-open-data-branch-locator/)
+- [Open Data API](https://apis.io/collections/nationwide-building-society/open-obie-open-data-personal-current-accounts/)
 
-### Nationwide Branch Locator API
+#### Overlays (3)
 
-Public, unauthenticated OBIE Open Data API listing Nationwide branch locations, opening hours, accessibility, and services.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- **Human URL:** [https://developer.nationwide.co.uk/open-banking/open-data-apis](https://developer.nationwide.co.uk/open-banking/open-data-apis)
-- **Base URL:** `https://openapi.nationwide.co.uk/open-banking/v2.2`
+- [Nationwide Building Society Atm Locator Overlay](https://apis.io/overlays/nationwide-building-society/nationwide-building-society-atm-locator-overlay/)
+- [Nationwide Building Society Branch Locator Overlay](https://apis.io/overlays/nationwide-building-society/nationwide-building-society-branch-locator-overlay/)
+- [Nationwide Building Society Personal Current Accounts Overlay](https://apis.io/overlays/nationwide-building-society/nationwide-building-society-personal-current-accounts-overlay/)
 
-#### Tags
+#### Security (3)
 
-- Open Data
-- Branches
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Nationwide Building Society Authentication](https://apis.io/security/nationwide-building-society/nationwide-building-society-authentication/)
+- [Nationwide Building Society Domain Security](https://apis.io/security/nationwide-building-society/nationwide-building-society-domain-security/)
+- [Nationwide Building Society Vulnerability Disclosure](https://apis.io/security/nationwide-building-society/nationwide-building-society-vulnerability-disclosure/)
 
-- [OpenAPI](openapi/obie-open-data-branch-locator-openapi.json) — shared OBIE Open Data standard (Branch Locator v2.3.0)
-- [Documentation](https://developer.nationwide.co.uk/open-banking/open-data-apis)
+#### OAuth scopes (1)
 
-### Nationwide Personal Current Accounts API
+The permissions the API asks for.
 
-Public, unauthenticated OBIE Open Data API publishing reference data for Nationwide personal current account products, features, and fees. Confirmed live (HTTP 200, application/json) at v2.2.
+- [Nationwide Building Society Scopes](https://apis.io/scopes/nationwide-building-society/nationwide-building-society-scopes/)
 
-- **Human URL:** [https://developer.nationwide.co.uk/open-banking/open-data-apis](https://developer.nationwide.co.uk/open-banking/open-data-apis)
-- **Base URL:** `https://openapi.nationwide.co.uk/open-banking/v2.2`
+## Where to find this API
 
-#### Tags
-
-- Open Data
-- Personal Current Accounts
-
-#### Properties
-
-- [OpenAPI](openapi/obie-open-data-personal-current-accounts-openapi.json) — shared OBIE Open Data standard (PCA v2.4.0)
-- [Documentation](https://developer.nationwide.co.uk/open-banking/open-data-apis)
-
-### Nationwide Account and Transaction Information API (AIS)
-
-OBIE Read/Write Account and Transaction Information (AIS) API providing consented access to Nationwide account, balance, and transaction data. FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2 SCA).
-
-- **Human URL:** [https://developer.nationwide.co.uk/open-banking/account-information-apis](https://developer.nationwide.co.uk/open-banking/account-information-apis)
-- **Base URL:** `https://api.nationwide.co.uk/open-banking/v3.1/aisp`
-
-#### Tags
-
-- Account Information
-- AIS
-- Read/Write
-
-### Nationwide Payment Initiation API (PIS)
-
-OBIE Read/Write Payment Initiation (PIS) API for initiating payments from Nationwide accounts with customer consent. FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2 SCA).
-
-- **Human URL:** [https://developer.nationwide.co.uk/open-banking/payment-initiation-apis](https://developer.nationwide.co.uk/open-banking/payment-initiation-apis)
-- **Base URL:** `https://api.nationwide.co.uk/open-banking/v3.1/pisp`
-
-#### Tags
-
-- Payment Initiation
-- PIS
-- Read/Write
-
-### Nationwide Confirmation of Funds API (CBPII)
-
-OBIE Read/Write Confirmation of Funds (CBPII) utility API for checking fund availability on a Nationwide account. FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2 SCA).
-
-- **Human URL:** [https://developer.nationwide.co.uk/open-banking/utility-apis](https://developer.nationwide.co.uk/open-banking/utility-apis)
-- **Base URL:** `https://api.nationwide.co.uk/open-banking/v3.1/cbpii`
-
-#### Tags
-
-- Confirmation of Funds
-- CBPII
-- Read/Write
-
-### Nationwide Variable Recurring Payments API (VRP)
-
-OBIE Read/Write Variable Recurring Payments (VRP) API for consented sweeping and recurring payment mandates. FAPI-secured (OAuth2/OIDC, mutual-TLS, PSD2 SCA).
-
-- **Human URL:** [https://developer.nationwide.co.uk/open-banking/payment-initiation-apis](https://developer.nationwide.co.uk/open-banking/payment-initiation-apis)
-- **Base URL:** `https://api.nationwide.co.uk/open-banking/v3.1/pisp`
-
-#### Tags
-
-- Variable Recurring Payments
-- VRP
-- Read/Write
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.nationwide.co.uk/)
-- [Developer Portal](https://developer.nationwide.co.uk/)
 - [Documentation](https://developer.nationwide.co.uk/open-banking)
-- [Getting Started](https://developer.nationwide.co.uk/open-banking/open-data-apis)
+- [Getting started](https://developer.nationwide.co.uk/open-banking/open-data-apis)
+- [Sign up](https://developer.nationwide.co.uk/)
 - [Support](https://developer.nationwide.co.uk/open-banking/support/faq)
-- [Status Page](https://developer.nationwide.co.uk/open-banking/support/known-issues)
-- [LinkedIn](https://www.linkedin.com/company/nationwide-building-society)
-- [About](https://www.nationwide.co.uk/about-us)
+- [Security](https://www.nationwide.co.uk/help/fraud-and-security/report-security-vulnerability)
+- [Status](https://developer.nationwide.co.uk/open-banking/support/known-issues)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 40.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 36.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 13.2 |
+
+**Agent readiness 26.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 36.2** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nationwide-building-society/](https://apis.io/providers/nationwide-building-society/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Nationwide Building Society: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nationwide-building-society/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
